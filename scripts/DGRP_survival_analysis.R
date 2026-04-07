@@ -23,6 +23,7 @@ library(survminer)
 library(rms)
 library(see)
 
+#create jmp2r to extract survival data
 jmp2r <- function(x){
   for(i in 1:nrow(x)){
     xx <- x[i,]
