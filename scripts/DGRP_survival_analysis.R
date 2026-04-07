@@ -52,15 +52,14 @@ cox.zph(m1_line)	#PHA violated
 dd <- datadist(d)
 options(datadist = 'dd')
 
+#parametric survival model
 psm1 <- psm(Surv(time, censor) ~ DGRP, 
             data=d,
             dist="logistic")
 psm1_gaussian <- update(psm1, dist="gaussian")
 AIC(psm1)
 AIC(psm1_gaussian)
-
 psm1_emm <- emmeans(psm1, ~ DGRP)
-
 emmeanss <- as.data.frame(psm1_emm)
 nrow(emmeanss)
 colnames(emmeanss) <- c("DGRP", "emmean", "SE", "df", "CI05", "CI95")
@@ -116,7 +115,6 @@ file_path2 <- "../resistant_df_80%_emmean.csv"
 write.csv(resistant_df, file = file_path2, row.names = FALSE)
 
 ######### t-SNE
-
 #setwd("..")
 setwd(".../analysis/")
 library(Rtsne)
@@ -132,16 +130,12 @@ head(Emmeans)
 
 #check the HRs
 plot(emmean ~ as.factor(DGRP), Emmeans)
-
 head(d$Genot.)
 head(Emmeans$DGRP)
-
 dGenots <- unique(d$Genot.)
 EmmeansDGRPs <- unique(Emmeans$DGRP)
-
 length(dGenots)
 length(EmmeansDGRPs)
-
 table(dGenots %in% EmmeansDGRPs)
 table(EmmeansDGRPs %in% dGenots)
 
@@ -151,9 +145,7 @@ dim(d)
 spectra <- d[,11:ncol(d)]
 dim(spectra)
 head(colnames(spectra))
-
 dataInd <- d[,1:10]
-
 set.seed(88)
 ts1 <- Rtsne(spectra)
 
