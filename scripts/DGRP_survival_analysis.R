@@ -1,7 +1,7 @@
 #### Determine starvation sensitive and starvation resistant DGRP lines using emmeans
 #### Generate t-sne plot using starvation resistance data and ATR-spectra
 ##Written by: Dr Rita Ibrahim and Dr Adam Dobson##
-##School of Molecular Biosciences, University of Glasgow, UK##
+##School of Molecular Biosciences, University of Glasgow, Glasgow G12 8QQ, UK##
 
 rm(list=ls())
 
